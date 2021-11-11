@@ -43,12 +43,46 @@ html{
 }
 header{
     display: flex;
-    justify-content: center; /*Centralização horizontal*/
+    justify-content: space-between; /*Centralização horizontal*/
     align-items: center; /*Centralização vertical*/    
     background-color:var(--cor-prim);
     min-height: 50px;
     flex-wrap: wrap;
 }
+#social ul{
+    list-style: none;
+    display: flex;
+
+}
+#social ul li img{
+    width: 50px;
+    filter: brightness(0.15);
+        
+}
+#social ul li a {
+    height: 40px;
+    align-items: center;
+    display: flex;
+    margin-left: 20px;
+    color: var(--cor-fundo);
+    text-decoration: none;
+}
+#social ul li a span{
+    margin-left: 20px;
+    color: var(--cor-fundo);
+    visibility: hidden;
+    width: 0;
+    
+}
+#social ul li a:hover span{
+    visibility: visible;
+    width: auto;
+    animation: para-tras 1s;
+}
+#logo{
+    margin: 20px;
+}
+
 
 #menu-principal{
     display:flex;     
@@ -179,6 +213,7 @@ div{
     background: var(--cor-fundo-clara);
     border-radius: 16px;
     height: 100%;
+    
 }
 .cartao-carro div{
     background: var(--cor-fundo);
@@ -194,9 +229,29 @@ aside{
     text-align: center;   
     background-color: var(--cor-fundo);
     min-height: 100%;    
-    margin: 5px;
-    width: 35%;
-}.vendido p{
+    margin: 20px;
+    width: 25%;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 1.2rem;
+
+}
+aside a {
+    text-align: center;
+    color: var(--cor-prim-clara);
+    text-decoration: none;
+}
+aside a:hover {
+    text-decoration: underline;
+}
+aside article{
+    text-align: center;
+    margin:  50px 0;
+    padding: 30px 0;
+    border: 3px groove var(--cor-texto); 
+    border-radius: 15px;   
+}
+.vendido p{
     font-style: italic;
 }
 footer{
@@ -219,12 +274,81 @@ footer a:hover {
     text-decoration: underline;
 }
 /*Regras para tela com largura até 600px*/
-@media screen and (max-width: 600px){
-    main{
-        /* Muda a direção dos filhos para coluna vertical*/
+@keyframes para-tras{
+    0% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* REGRAS DE RESPONSIVIDADE*/
+
+/* Dispositivos (celulares) pequenos */
+
+@media screen and (max-width: 1200px){ 
+    body{
+        border: 3px dashed limegreen;
+        
+    }  
+    main {
+        display: flex;
         flex-direction: column;
     }
-    section, aside{
-        width: 100%;
+    section, aside {
+        width: calc(100% - 40px);
+     
     }
 } 
+
+/* Dispositivos (celurares) medios */
+@media screen and (max-width: 992px){ 
+    body{
+        border: 3px dashed aquamarine;
+    } 
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    section, aside {
+        width: calc(100% - 40px);
+       
+    }
+}
+
+/* Dispositivos (tablets) */
+@media screen and (max-width: 768px){   
+    body{
+        border: 3px dashed gold;
+    }  
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    #social ul li a span{
+        display: none;
+    } 
+    section, aside {
+        width: calc(100% - 40px);
+    } 
+}
+
+/* Dispositivos (tablets) */
+@media screen and (max-width: 576px){  
+    body{
+        border: 3px dashed magenta;
+        } 
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    section, aside {
+       width: calc(100% - 40px);
+    }
+    #social ul li a span{
+        display: none;
+    }  
+}
+
+/* Padrão do nosso CSS é pra telas > 1200px */
