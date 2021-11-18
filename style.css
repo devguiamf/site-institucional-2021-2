@@ -1,354 +1,490 @@
-
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-/* 
 
-    Cor primaria: #F9D84D 
-    cor primaria clara: #FFE36E
-    cor secundaria: #1B5173
-    cor secundaria clara: #487A9B
-    cor de fundo: #333333
-    cor do texto: #cccccc
-*/
-/* VARIAVEIS */
+/* Variáveis */
 :root {
-    --cor-prim: #F9D84D;
-    --cor-prim-clara: #FFE36E;
-    --cor-secun: #F94D58;
-    --cor-secun-clara:  #FD9CA3;
-    --cor-fundo: #333333;
-    --cor-fundo-clara: #555555;
-    --cor-texto: #cccccc;
-    --fonte-texto: 'IBM Plex Sans', sans-serif;
-    --fonte-titulo: 'Playfair Display', serif;
-    
+  --cor-prim: #F9D84D;
+  --cor-prim-clara: #FFEC9C;
+  --cor-secun: #F94D58;
+  --cor-secun-clara: #FD9CA3;
+  --cor-fundo: #333333;
+  --cor-fundo-clara: #555555;
+  --cor-texto: #EEEEEE;
+  --fonte-texto: 'IBM Plex Sans', sans-serif;
+  --fonte-titulo: 'Playfair Display', serif;
 }
 
-/****Css reset***/
-*{
-    font-family: var(--fonte-texto);
-    padding: 0;
-    margin: 0;
-    box-sizing: unset;
-    background-color: var(--cor--fundo) ;
-    color: var(--cor-texto);
+/************* CSS reset **************************/
+* { /* Todos os elementos */
+  font-family: var(--fonte-texto);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* a borda faz parte das dimensões do elemento */
+  /*background-color: var(--cor-fundo);
+  color: var(--cor-texto);*/
 }
-/****Css reset***/
+/*************************************************/
+html {
+  font-size: 16px;
+  scroll-behavior: smooth; /* Rolagem suave */
+}
+header {
+  display: flex;
+  justify-content: space-between;  /* espaço intermediário */
+  align-items: center;  /* centralização vertical */
+  background-color: var(--cor-prim);
+  min-height: 50px; /* altura mínima */
+  flex-wrap: wrap;  /* força a quebra de linhas entre elementos flex */
+}
+#img-logo {
+  background-color: transparent;
+  margin: 20px;
+}
 
-body{
-    background-color: var(--cor-fundo-clara);
-    font-size: 16px;
+/* nav #social */
+#social ul {
+  list-style: none;
+  display: flex;
+  margin: 20px;
 }
-html{
-    scroll-behavior: smooth;
-}
-header{
-    display: flex;
-    justify-content: space-between; /*Centralização horizontal*/
-    align-items: center; /*Centralização vertical*/    
-    background-color:var(--cor-prim);
-    min-height: 50px;
-    flex-wrap: wrap;
-}
-#social ul{
-    list-style: none;
-    display: flex;
 
-}
-#social ul li img{
-    width: 50px;
-    filter: brightness(0.15);
-        
-}
 #social ul li a {
-    height: 40px;
-    align-items: center;
-    display: flex;
-    margin-left: 20px;
-    color: var(--cor-fundo);
-    text-decoration: none;
-}
-#social ul li a span{
-    margin-left: 20px;
-    color: var(--cor-fundo);
-    visibility: hidden;
-    width: 0;
-    
-}
-#social ul li a:hover span{
-    visibility: visible;
-    width: auto;
-    animation: para-tras 1s;
-}
-#logo{
-    margin: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  color: var(--cor-fundo);
+  text-decoration: none;
 }
 
-
-#menu-principal{
-    display:flex;     
-    justify-content: center; /*Centralização horizontal*/  
-    align-items: center; /*Centralização vertical*/    
-    background-color: var(--cor-secun);
-    min-height: 25%;
-    width: 100%;
-    margin: 5px;
-    
-}
-#menu-principal ul {   
-    display: flex;   
-    list-style: none; /* Tira a decoração da lista */   
+#social ul li a img {
+  width: 40px;
+  filter: brightness(0.225);
 }
 
+#social ul li a span {
+  margin-left: 6px;
+}
+
+#menu-principal {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  align-items: center;  /* centralização vertical */
+  background-color: var(--cor-secun);
+  min-height: 25px; /* altura mínima */
+  width: 100%;
+}
+#menu-principal ul { /* Afeta o <ul> dentro de #menu-principal */
+  list-style: none; /* Tira a decoração dos itens da lista */
+  display: flex;  /* Container flex - todos os itens filhos na horizontal por padrão */
+}
 #menu-principal ul li {
-    display: flex;
-    height: 36px;
-    margin: 0 10px; /* 0 topo e fundo, 10px esquerda e direita */   
-    font-family: var(--fonte-titulo);
+  height: 36px;
+  margin: 0 10px; /* 0 topo, fundo; 10px esquerda e direita */
+  display: flex;
 }
-#menu-principal ul li a{   
-    display: flex;    
-    height: 36px;
-    align-items: center; 
-    padding: 0 10px; 
-    background-color: var(--cor-secun);
-    transition: 300ms;
-     
+#menu-principal ul li a {
+  font-family: var(--fonte-titulo);
+  height: 36px;
+  align-items: center;
+  display: flex;
+  padding: 0 10px;
+  color: var(--cor-texto);
+  text-decoration: none; /* Sem sublinhado */
+  background-color: var(--cor-secun);
+  transition: 300ms; /* Afeta a velocidade dos efeitos do hover */
 }
-#menu-principal ul li a:hover{
-    filter: brightness(1.2); /* menor que 0 escurece a cor de fundo, maior que 0 */
-}
-
-main{
-    display: flex;
-    justify-content: center; /*Centralização horizontal*/
-    align-items: stretch; /*Meus filhos tem meu tamanho*/    
-    min-height: 300px;
-}
-
-section{
-    display: flex;
-    justify-content: center; /*Centralização horizontal*/
-    align-items: center; /*Centralização vertical*/
-    flex-direction: column;/*filhos em coluna*/    
-    background-color: transparent;
-    min-height: 100%;
-    flex-grow: 3;
-    margin: 20px;
+/* Quando o mouse passa sobre o link do menu */
+#menu-principal ul li a:hover {
+  /* Filtro que escurece a cor do item (cor de frente + cor de fundo 
+    brightness < 1: escurece
+    brightness > 1: clareia
+  */
+  filter: brightness(1.2);
 }
 
-section > h1{
-    text-align: left;
-    width: 100%;
-    font-family: var(--fonte-titulo);
-    font-style: italic;
-    font-size: 2rem;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-}
-hr{
-    width: 100%;
+#menu-contraido {
+  display: inline-block;
+  position: relative;
 }
 
-article{
-    display: flex;
-    justify-content: center; /*Centralização horizontal*/
-    align-items: center; /*Centralização vertical*/    
-    background-color:transparent;
-    margin: 5px;
-    min-height: 50px;
-    width: 100%;
-    flex-wrap: wrap;
+/* Input checkbox e o span têm o mesmo tamanho e estão um sobre o outro */
+#menu-contraido input, #menu-contraido span {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-article h1{
-    text-align: center;
-    font-style: normal;
-    font-size: 1.5rem;
-    font-family: var(--fonte-titulo);
-    width: 100%;
-    margin-top: 20px;
+#menu-contraido input {
+  /* Quanto maior o z-index, mais acima (pensando em camadas) o elemento estará.
+     O padrão do z-index é 0. */
+  z-index: 100;
+  opacity: 0;   /* Esconde o checkbox */
+  display: none;
 }
 
-.cartao-carro{
-   
-    border: 1px solid var(--cor-fundo);
-    background: var(--cor-fundo);
-    width: 300px;
-    height: 300px;
-    margin: 20px;
-    border-radius: 16px;
-   
-   
-}
-.cartao-carro img{
-    width: 100%;
-    margin-top: 16px;
-    
+#menu-contraido span {
+  display: block;
+  background-color: var(--cor-prim);
+  border-radius: 4px;
+  border: 2px solid var(--cor-texto);
+  background-image: url('img/menu-icon-48x48.png');
+  background-size: 40px;
+  background-position: center center;
+  cursor: pointer;  /* Cursor de "mãozinha" para links */
+  display: none;
 }
 
-.fusca{
-    width: 100%;
-    height: 200px;
-    margin-top: 16px;
+/* O seletor ~ seleciona o elemento irmão */
+#menu-contraido input:checked ~ span {
+  background-image: url('img/close-icon-48x48.png');
 }
 
-.cartao-carro h1{
-    text-align: left;
-    margin-left: 20px;
-    font-family: var(--fonte-titulo);
-    font-size: 1.3rem;
-    color: var(--cor-prim-clara);
+main {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  align-items: stretch;  /* filhos com 100% da altura do pai */
+  min-height: 200px; /* altura mínima */
+  background-color: var(--cor-fundo-clara);
 }
 
-.cartao-carro p {
-   margin-top: 10px;
-   margin-left: 30px;
+footer {
+  display: flex;
+  justify-content: space-around;  /* distribui o espaço entre os itens filhos */
+  align-items: center;  /* centralização vertical */
+  background-color: var(--cor-fundo);
+  min-height: 50px; /* altura mínima */
+  padding: 20px;
+  color: var(--cor-texto);
 }
 
-.cartao-carro a {
-    text-decoration: none;
-    
-}
-
-div{
-    background: var(--cor-fundo-clara);
-    border-radius: 16px;
-    height: 100%;
-    
-}
-.cartao-carro div{
-    background: var(--cor-fundo);
-}
-.cartao-carro a:hover div{
-    filter: brightness(1.2);
-    box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.15);
-}
-aside{
-    display: flex;
-    justify-content: center; /*Centralização horizontal*/
-    align-items: center; /*Centralização vertical*/ 
-    text-align: center;   
-    background-color: var(--cor-fundo);
-    min-height: 100%;    
-    margin: 20px;
-    width: 25%;
-    border-radius: 16px;
-    padding: 16px;
-    font-size: 1.2rem;
-
-}
-aside a {
-    text-align: center;
-    color: var(--cor-prim-clara);
-    text-decoration: none;
-}
-aside a:hover {
-    text-decoration: underline;
-}
-aside article{
-    text-align: center;
-    margin:  50px 0;
-    padding: 30px 0;
-    border: 3px groove var(--cor-texto); 
-    border-radius: 15px;   
-}
-.vendido p{
-    font-style: italic;
-}
-footer{
-    display: flex;
-    justify-content: center; /*Centralização horizontal*/
-    align-items: center; /*Centralização vertical*/    
-    background-color: var(--cor-fundo);
-    min-height: 50px;
-    padding: 20px;
-    justify-content: space-around;
-
-}
-
-footer a{
-    color: var(--cor-secun);
-    text-decoration: none;
+/* Links dentro do footer */
+footer a {
+  color: var(--cor-prim);
+  text-decoration: none; /* sem sublinhado */
 }
 
 footer a:hover {
+  text-decoration: underline;
+}
+
+section {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  align-items: center;  /* centralização vertical */
+  flex-direction: column; /* itens filhos em coluna (na vertical) */
+  background-color: transparent;
+  width: 75%;
+  margin: 20px;
+}
+
+/* Regra para o título h1 que está dentro de section */
+section > h1 { /* O sinal de > indica que serão atingidos apenas
+  os h1 FILHOS DIRETOS de section */
+  text-align: left;
+  width: 100%;
+  color: var(--cor-fundo);
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 2rem;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* Regra para os títulos h1 que estão dentro dos articles do section */
+section > article > h1 {
+  text-align: right;
+  width: 100%;
+  color: var(--cor-texto);
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+}
+
+/* Classe cartao-carro */
+.cartao-carro {
+  border: 1px solid var(--cor-fundo);
+  background-color: var(--cor-fundo);
+  width: 300px;
+  height: 360px;
+  margin: 20px;
+  border-radius: 16px;
+}
+
+/* Regra para link de .cartao-carro */
+.cartao-carro a {
+  text-decoration: none;  
+}
+
+.cartao-carro a div {
+  transition: 400ms;
+}
+
+/* Regra para o link de .cartao-carro quando o mouse sobrevoa */
+.cartao-carro a:hover div {
+  filter: brightness(1.2);
+  box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.15);
+}
+
+/* Regra para a div interna de .cartao-carro */
+.cartao-carro div {
+  height: 360px;
+  border-radius: 16px;
+}
+
+/* Regra para imagens dentro de .cartao-carro */
+.cartao-carro img {
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.cartao-carro h1 {
+  margin: 20px;
+  font-family: var(--fonte-titulo);
+  font-size: 1.75rem;
+  color: var(--cor-secun);
+}
+
+.cartao-carro p {
+  color: var(--cor-texto);
+  margin: 0 20px;
+}
+
+aside {
+  display: flex;
+  justify-content: left;  /* alinhamento inicial */
+  align-items: center;  /* centralização vertical */
+  background-color: var(--cor-fundo);
+  margin: 20px;
+  border-radius: 16px;
+  width: 25%;
+  padding: 16px;
+  color: var(--cor-texto);
+  font-size: 1.2rem;
+  flex-direction: column;
+}
+
+/* Links que estão dentro do aside */
+aside a {
+  color: var(--cor-prim-clara);
+  text-decoration: none;  /* Tira o sublinhado */
+}
+
+aside a:hover {
+  color: var(--cor-prim);
+  text-decoration: underline;
+}
+
+/* Articles que estão dentro de aside */
+aside article {
+  text-align: center;
+  margin: 50px 0;
+  padding: 30px 20px;
+  border: 3px groove var(--cor-texto);
+  border-radius: 8px;
+}
+
+article {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  flex-wrap: wrap;
+  align-items: center;  /* centralização vertical */
+  background-color: transparent;
+  margin: 5px;
+  min-height: 100px;
+  width: 100%;
+}
+
+.pagina-interna{
+    color: var(--cor-texto);
+    font-family: var(--fonte-texto);
+}
+
+.pagina-interna figure {
+    background-color: var(--cor-fundo);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 30px;
+    text-align: center;
+}
+
+.pagina-interna figure img{
+    width: 100%;
+    max-width: 800px;
+
+}
+
+.pagina-interna figure figcaption {
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    text-align: center;
+    color: var(--cor-texto);
+    text-shadow: 1px 1px 2px var(--cor-fundo-clara);
+    padding: 8px 8px 0 8px;
+}
+
+.pagina-interna p {
+    text-align: left;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    width: 100%;
+
+}
+.pagina-interna section h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 2.5rem;
+    color: var(--cor-secun-clara);
+    font-weight: bold;
+    text-align: left;
+}
+
+.pagina-interna section h2{
+    text-align: left;
+  width: 100%;
+  color: var(--cor-fundo);
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.5 rem;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.pagina-interna a {
+    color: var(--cor-prim-clara);
+    text-decoration: none;
+
+}
+
+.pagina-interna a:hover {
+    color: var(--cor-prim);
     text-decoration: underline;
 }
-/*Regras para tela com largura até 600px*/
-@keyframes para-tras{
-    0% {
-        transform: translateX(100px);
-    }
-    100% {
-        transform: translateX(0);
-    }
+
+/**************************************************
+             REGRAS DE RESPONSIVIDADE
+***************************************************/
+
+/* Computadores com tela pequena */
+@media (max-width: 1200px) {
+  body {
+    filter: hue-rotate(45deg);
+  }
+
+  /* Esconde o texto das redes sociais */
+  #social ul li a span {
+    display: none; /* Não preserva o espaço do elemento */
+  }
+
+  /* Ajusta o flex-direction do main para column para
+    passar o aside para baixo */
+  main {
+    flex-direction: column;
+  }
+
+  /* section e aside passam a ter largura de 100% */
+  section, aside {
+    /* Usa a função calc() para descontar os 40px das margens
+      laterais dos elementos e evitar rolagem horizontal */
+    width: calc(100% - 40px);
+  }
+
+  /* Os anúncios do article ficam na horizontal */
+  aside {
+    flex-direction: row;
+    /* Faz com que os articles fiquem com a mesma altura */
+    align-items: stretch;
+  }
+
+  aside article {
+    margin: 0 30px;
+  }
 }
 
-/* REGRAS DE RESPONSIVIDADE*/
+/* Dispositivos (tablets) */
+@media (max-width: 992px) {
+  body {
+    filter: hue-rotate(90deg);
+  }
+  /* POR ENQUANTO não necessita de ajuste */
+}
+
+/* Dispositivos (celulares) médios */
+@media (max-width: 768px) {
+  body {
+    filter: hue-rotate(135deg);
+  }
+
+  #menu-principal {
+    min-height: 56px;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  #menu-contraido {
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  #menu-contraido input, #menu-contraido span {
+    display: block; /* Reexibe o botão do menu */
+    left: 20px;
+    top: -38px;
+  }
+
+  #menu-contraido ul {
+    display: none;    /* Esconder o menu */
+    margin-top: 30px;
+  }
+
+  #menu-contraido ul li {
+    display: block;
+    margin: 6px 0;
+  }
+
+  #menu-contraido ul li a {
+    width: 100%;
+    display: block;
+  }
+
+  #menu-contraido input:checked ~ ul {
+    display: block; /* Reexibe o menu quando o checkbox for marcado */
+  }
+
+  #menu-contraido input:checked,  #menu-contraido input:checked ~ span {
+    top: -30px;
+  }
+
+  /* Os anúncios do article voltam a ficar na vertical */
+  aside {
+    flex-direction: column;
+    /* "Desliga" o stretch do breakpoint anterior */
+    align-items: flex-start;
+  }
+
+  aside article {
+    margin: 30px 0;
+  }
+
+  /* Empilha os elementos do footer */
+  footer {
+    flex-direction: column;
+  }
+
+  footer img, footer address {
+    margin-bottom: 20px;
+  }
+
+}
 
 /* Dispositivos (celulares) pequenos */
+@media (max-width: 576px) {
+  body {
+    filter: hue-rotate(180deg);
+  }
 
-@media screen and (max-width: 1200px){ 
-    body{
-        border: 3px dashed limegreen;
-        
-    }  
-    main {
-        display: flex;
-        flex-direction: column;
-    }
-    section, aside {
-        width: calc(100% - 40px);
-     
-    }
-} 
-
-/* Dispositivos (celurares) medios */
-@media screen and (max-width: 992px){ 
-    body{
-        border: 3px dashed aquamarine;
-    } 
-    main {
-        display: flex;
-        flex-direction: column;
-    }
-    section, aside {
-        width: calc(100% - 40px);
-       
-    }
+  /* Empilha os elementos do header */
+  header {
+    flex-direction: column;
+  }
 }
 
-/* Dispositivos (tablets) */
-@media screen and (max-width: 768px){   
-    body{
-        border: 3px dashed gold;
-    }  
-    main {
-        display: flex;
-        flex-direction: column;
-    }
-    #social ul li a span{
-        display: none;
-    } 
-    section, aside {
-        width: calc(100% - 40px);
-    } 
-}
-
-/* Dispositivos (tablets) */
-@media screen and (max-width: 576px){  
-    body{
-        border: 3px dashed magenta;
-        } 
-    main {
-        display: flex;
-        flex-direction: column;
-    }
-    section, aside {
-       width: calc(100% - 40px);
-    }
-    #social ul li a span{
-        display: none;
-    }  
-}
-
-/* Padrão do nosso CSS é pra telas > 1200px */
+/* O padrão do nosso CSS é para telas > 1200px */
